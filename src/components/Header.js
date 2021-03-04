@@ -7,7 +7,7 @@ class Header extends Component{
     return(
   <AppBar position="static">
   <Toolbar>
-    <IconButton>
+    <IconButton style={{color:"#fff000"}}>
       <SportsCricketIcon></SportsCricketIcon>
     </IconButton>
     <Typography variant="h6" >
