@@ -1,6 +1,7 @@
-import {Component} from 'react';
+import React, {Component} from 'react';
 import {Tabs, Tab, Box} from '@material-ui/core';
 import {getMatches} from './service/CrickApi.js';
+import CardComp from './CardComponent.js';
 
 function TabPanel(props){                             // it is for panel matching purpose
 
@@ -24,7 +25,7 @@ class TabCom extends Component{
 
     this.state = {
       value: 0,
-      matches: null
+      matches:[],
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -35,9 +36,9 @@ class TabCom extends Component{
   componentDidMount(){
     getMatches()
     .then(data =>{
-      this.setState({matches: data});
+      this.setState({matches: data.matches});
       console.log(data.matches);
-    });
+    }).catch(error => { console.log(error)});
   }
 
 
@@ -49,24 +50,17 @@ handleChange = (e, value) => {
   }
 
 
-  getData(type){                         //used as props.children in TabPanel for display data based on match type
-    if(type==="Twenty20"){
-      return (
-        <h1> Hello </h1>
-      )
-  }
-
-  else if (type === "") {
-    return (
-      <h1> Hello ODI </h1>
+  getData(type){                                //used as props.children in TabPanel for display data based on match type
+    return(
+      <>
+      {this.state.matches.map((match) => {
+        return(
+        <React.Fragment key={match.unique_id}>
+          {match.type === type ? <CardComp match={match}/> : null}
+       </React.Fragment>
+     )})}
+      </>
     )
-  }
-
-  else if (type === "Test") {
-    return (
-      <h1> Hello Test </h1>
-    )
-  }
 }
 
 
@@ -90,7 +84,7 @@ handleChange = (e, value) => {
         </TabPanel>
 
         <TabPanel index={2} value={this.state.value}>
-          {this.getData("Test")}
+          {this.getData("test")}
         </TabPanel>
       </>
     )
