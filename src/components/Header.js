@@ -10,7 +10,7 @@ class Header extends Component{
     <IconButton style={{color:"#fff000"}}>
       <SportsCricketIcon></SportsCricketIcon>
     </IconButton>
-    <Typography variant="h6" >
+    <Typography >
         CRICK-SHOTS
     </Typography>
 

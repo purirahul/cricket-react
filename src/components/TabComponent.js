@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Tabs, Tab, Box} from '@material-ui/core';
+import {Tabs, Tab, Box, Grid} from '@material-ui/core';
 import {getMatches} from './service/CrickApi.js';
 import CardComp from './CardComponent.js';
 
@@ -51,16 +51,19 @@ handleChange = (e, value) => {
 
 
   getData(type){                                //used as props.children in TabPanel for display data based on match type
-    return(
-      <>
-      {this.state.matches.map((match) => {
+
+    const data =  this.state.matches.map((match) => {
         return(
         <React.Fragment key={match.unique_id}>
-          {match.type === type ? <CardComp match={match}/> : null}
+          {match.type === type ?
+            <Box alignItems="center" display="flex" justifyContent="center">
+              <CardComp match={match} />
+            </Box>
+             : null}
        </React.Fragment>
-     )})}
-      </>
-    )
+     )});
+
+    return data;
 }
 
 
@@ -76,11 +79,14 @@ handleChange = (e, value) => {
 
 
         <TabPanel index={0} value={this.state.value}>
+
           {this.getData("Twenty20")}
+
         </TabPanel>
 
+
         <TabPanel index={1} value={this.state.value} >
-          {this.getData("")}
+          {this.getData("ODI")}
         </TabPanel>
 
         <TabPanel index={2} value={this.state.value}>
