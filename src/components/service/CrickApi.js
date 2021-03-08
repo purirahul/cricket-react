@@ -8,3 +8,12 @@ export const getMatches = () => {
         .then(res => res.json())
         .catch(error => console.log(error));
 };
+
+
+export const getScore = (id) =>{
+  const url = `https://cricapi.com/api/cricketScore?apikey=${API_KEY}&unique_id=${id}`;
+
+  return fetch(url)
+         .then(res => res.json())
+         .catch(error => console.log(error));
+};
