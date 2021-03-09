@@ -35,6 +35,9 @@ class CardComp extends Component{
 
         <Box style={{padding:5, display:'flex'}}>
           <Typography style={{marginBottom:10, fontSize:12}}> {new Date(this.props.match.dateTimeGMT).toLocaleString()}</Typography>
+          <Box flexGrow={1}>
+          <Typography style={{ marginBottom:10, fontSize:18}}>{this.props.match.toss_winner_team ?<> <b>TOSS: </b>{this.props.match.toss_winner_team}</> : null}</Typography>
+          </Box>
           <Typography style={{marginLeft:'auto', marginBottom:10, fontSize:12}}> {this.props.match.matchStarted ? "Match is Started": "Match is not yet started"}</Typography>
         </Box>
 
@@ -52,11 +55,11 @@ class CardComp extends Component{
         }
 
         {this.props.match.winner_team ?
-
+          <Grid container justify="center" alignItems="center">
             <Box justifyContent="center" alignItems="center" border={1} borderRadius={10} borderColor='secondary.main' style={{marginTop:10, width:'50%', paddingTop:10,paddingBottom:10, paddingLeft: 20, paddingRight:20}}>
               <Typography style={{fontWeight:'bold'}}> {this.props.match.winner_team} Wins the Match. </Typography>
             </Box>
-
+          </Grid>
             : null
         }
 

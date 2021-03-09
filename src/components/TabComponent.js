@@ -75,6 +75,7 @@ handleChange = (e, value) => {
           <Tab label="T20" />
           <Tab label="One Day" />
           <Tab label="Test" />
+          <Tab label="Player Stats" />
         </Tabs>
 
 
@@ -92,6 +93,11 @@ handleChange = (e, value) => {
         <TabPanel index={2} value={this.state.value}>
           {this.getData("test")}
         </TabPanel>
+
+        <TabPanel index={3} value={this.state.value}>
+          <h1>Hello</h1>
+        </TabPanel>
+
       </>
     )
   }
