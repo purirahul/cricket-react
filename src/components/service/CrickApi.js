@@ -17,3 +17,12 @@ export const getScore = (id) =>{
          .then(res => res.json())
          .catch(error => console.log(error));
 };
+
+
+export const playerFinder = (name) => {
+   const url = `https://cricapi.com/api/playerFinder?apikey=${API_KEY}&name=${name}`;
+
+   return fetch(url)
+          .then(res=>res.json())
+          .catch(error=>console.log(error));
+};

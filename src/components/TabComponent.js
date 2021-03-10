@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import {Tabs, Tab, Box, Grid} from '@material-ui/core';
+import {Tabs, Tab, Box, Grid, InputBase, Button} from '@material-ui/core';
 import {getMatches} from './service/CrickApi.js';
 import CardComp from './CardComponent.js';
+import SearchIcon from '@material-ui/icons/Search';
+import player from '../images/player.jpg';
 
 function TabPanel(props){                             // it is for panel matching purpose
 
@@ -94,8 +96,15 @@ handleChange = (e, value) => {
           {this.getData("test")}
         </TabPanel>
 
-        <TabPanel index={3} value={this.state.value}>
-          <h1>Hello</h1>
+        <TabPanel index={3} value={this.state.value} >
+        <Box>
+          <InputBase placeholder="Enter Player Name" style={{marginTop:30, marginLeft:30, border:"3px solid #00B4CC", width:"50%", borderRadius:"8px 0 0 8px", height:50, paddingLeft:8}}/>
+          <Button variant="contained"  style={{ borderRadius:"0 8px 8px 0", backgroundColor:"#00B4CC", height:50 }}>
+            <SearchIcon />
+          </Button>
+        </Box>
+        <hr style={{marginTop: 14, weight:5}} />
+        <img src={player} alt="player"style={{marginTop:10}} />
         </TabPanel>
 
       </>
