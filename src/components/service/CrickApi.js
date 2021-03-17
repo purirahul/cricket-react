@@ -1,4 +1,4 @@
-const API_KEY="liBfHdR0hGWcjGniTVPwd1kQjk62";
+export const API_KEY="liBfHdR0hGWcjGniTVPwd1kQjk62";
 
 
 export const getMatches = () => {
